@@ -4,18 +4,9 @@ import React from 'react/addons';
 import { equal } from 'assert';
 
 const { TestUtils } = React.addons;
-const { Cond, T } = require('../module/');
+const { Cond, T, gt, lt, lte, gte, eq, notEq } = require('../module/');
 
 describe('React-Cond', () => {
-  //it('should render child component', () => {
-		//const component = TestUtils.renderIntoDocument(
-			//<Cond value={true}>
-				//<h1>expected</h1>
-			//</Cond>
-		//);
-		//const val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-    //equal(val.getDOMNode().textContent, 'expected');
-	//});
 
   it('should render the child component if the condition is true', () => {
 		let component = TestUtils.renderIntoDocument(
@@ -88,4 +79,95 @@ describe('React-Cond', () => {
 		let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
     equal(val.getDOMNode().textContent, 'expected');
 	});
+
+	describe('#gt', () => {
+
+		it('should render the child component the value is gt the nr', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={10}>
+					{[ gt(11), <h1>unexpected</h1>]}
+					{[ gt(9), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#lt', () => {
+
+		it('should render the child component the value is lt the nr', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={10}>
+					{[ lt(10), <h1>unexpected</h1>]}
+					{[ lt(11), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#lte', () => {
+
+		it('should render the child component the value is lte the nr', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={10}>
+					{[ lte(9), <h1>unexpected</h1>]}
+					{[ lte(10), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#gte', () => {
+
+		it('should render the child component the value is gte the nr', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={10}>
+					{[ gte(11), <h1>unexpected</h1>]}
+					{[ gte(10), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#notEq', () => {
+
+		it('should render the child component the value is notEq the nr', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={10}>
+					{[ notEq(10), <h1>unexpected</h1>]}
+					{[ notEq(11), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#eq', () => {
+
+		it('should render the child component the value is eq the nr', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={10}>
+					{[ eq(11), <h1>unexpected</h1>]}
+					{[ eq(10), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
 });
