@@ -171,7 +171,34 @@ import { Cond, lte } from 'react-cond';
 ```
 
 #### `and`
+
+Combine two conditions with a logical and (`&&`).
+
+```jsx
+import { Cond, and, eq } from 'react-cond';
+
+const startsWith = x => str => str.startsWith(x);
+const endsWith = x => str => str.endsWith(x);
+
+<Cond value={str}>
+  {[ and(startsWith('-'), endsWith('-')), <h1>string starts and ends with a dash</h1>]}
+</Cond>
+```
+
 #### `or`
+
+Combine two conditions with a logical or (`||`).
+
+```jsx
+import { Cond, or, eq } from 'react-cond';
+
+const startsWith = x => str => str.startsWith(x);
+const endsWith = x => str => str.endsWith(x);
+
+<Cond value={str}>
+  {[ or(startsWith('-'), endsWith('-')), <h1>string starts or ends with a dash</h1>]}
+</Cond>
+```
 
 ## License
 
