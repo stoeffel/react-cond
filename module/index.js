@@ -31,7 +31,7 @@ export const Cond = React.createClass({
 
 	componentWillReceiveProps({ value: nextValue, compare: nextCompare }) {
 		const { compare, value } = this.props;
-		
+
 		if ( compare !== nextCompare || value !== nextValue ) this.forceUpdate();
 	},
 
@@ -59,3 +59,5 @@ export const gt = x => y => y > x;
 export const lt = x => y => y < x;
 export const gte = x => y => y >= x;
 export const lte = x => y => y <= x;
+export const and = (x, y) => val => x(val) && y(val);
+export const or = (x, y) => val => x(val) || y(val);

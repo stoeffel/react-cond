@@ -4,7 +4,7 @@ import React from 'react/addons';
 import { equal } from 'assert';
 
 const { TestUtils } = React.addons;
-const { Cond, T, gt, lt, lte, gte, eq, notEq } = require('../module/');
+const { Cond, T, gt, lt, lte, gte, eq, notEq, and, or } = require('../module/');
 
 describe('React-Cond', () => {
 
@@ -162,6 +162,46 @@ describe('React-Cond', () => {
 				<Cond value={10}>
 					{[ eq(11), <h1>unexpected</h1>]}
 					{[ eq(10), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#and', () => {
+
+		it('should render the child component both conditions are true', () => {
+			const startsWith = x => str => str.startsWith(x);
+			const endsWith = x => str => str.endsWith(x);
+
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={'_test_'}>
+					{[ and(startsWith('-'), endsWith('-')), <h1>unexpected</h1>]}
+					{[ and(startsWith('-'), endsWith('_')), <h1>unexpected</h1>]}
+					{[ and(startsWith('_'), endsWith('-')), <h1>unexpected</h1>]}
+					{[ and(startsWith('_'), endsWith('_')), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#or', () => {
+
+		it('should render the child component both conditions are true', () => {
+			const startsWith = x => str => str.startsWith(x);
+			const endsWith = x => str => str.endsWith(x);
+
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={'_test_'}>
+					{[ or(startsWith('-'), endsWith('-')), <h1>unexpected</h1>]}
+					{[ or(startsWith('-'), endsWith('_')), <h1>expected</h1>]}
+					{[ or(startsWith('_'), endsWith('-')), <h1>unexpected</h1>]}
+					{[ or(startsWith('_'), endsWith('_')), <h1>unexpected</h1>]}
 					{[ T, <h1>unexpected</h1>]}
 				</Cond>
 			);
