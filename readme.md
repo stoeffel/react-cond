@@ -59,9 +59,13 @@ Each **clause** has the following format:
 `{[ condition, <Component /> ]}` f.e. `{[ x=> x > 0, <Positive /> ]}`
 
 ```jsx
+import { Cond, T } from 'react-cond';
+// ...
+
 <Cond value={nr}>
-  {[ T, <Positive /> ]}
-  {[ T, <Zero /> ]}
+  {[ x => x > 0, <Positive /> ]}
+  {[ x => x < 0, <Negative /> ]}
+  {[ T, <Zero /> ]} // `T` always evaluates to true. see Condition Helpers.
 </Cond>
 ```
 
