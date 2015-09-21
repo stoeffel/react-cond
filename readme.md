@@ -6,6 +6,8 @@
   <a href="#license">License</a>
   <br><br>
   <img align="center" src="http://33.media.tumblr.com/cc0170c0a46e44f05347ed5e6197ef4c/tumblr_mv2pp0cnrV1qcung4o1_400.gif">
+  <br>
+  <sub>logo by <a href="http://justinmezzell.tumblr.com/">Justin Mezzell</a></sub>
   <blockquote align="center">Lisp-Style conditional rendering in react.</blockquote>
   <a href="https://travis-ci.org/stoeffel/react-cond"><img align="center" src="https://travis-ci.org/stoeffel/react-cond.svg?branch=master"></a>
 </p>
