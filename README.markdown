@@ -20,7 +20,7 @@ Make conditional rendering in react simple and expressive. `react-cond` is imple
   <a href="#importing">Importing</a> |
   <a href="#the-component-cond">The Component `Cond`</a> |
   <a href="#clauses">Clauses</a> |
-  <a href="#condition-helpers">Condition Helpers</a>
+  <a href="#helper-functions">Helper Functions</a>
 </p>
 
 ### Installation
@@ -64,11 +64,11 @@ import { Cond, T } from 'react-cond';
 <Cond value={nr}>
   {[ x => x > 0, <Positive /> ]}
   {[ x => x < 0, <Negative /> ]}
-  {[ T, <Zero /> ]} // `T` always evaluates to true. see Condition Helpers.
+  {[ T, <Zero /> ]} // `T` always evaluates to true. see Helper Functions.
 </Cond>
 ```
 
-### Condition Helpers
+### Helper Functions
 <p align="center">
   <a href="#t">T</a> |
   <a href="#eq">eq</a> |
@@ -81,8 +81,34 @@ import { Cond, T } from 'react-cond';
   <a href="#or">or</a>
 </p>
 
+The following helper functions are optional, but allow you to write even more expressive conditions for your clauses.
+
 #### `T`
+
+Can be used as an otherwise or else clause. It always evaluates to `true`.
+
+```jsx
+  import { Cond, T } from 'react-cond';
+	// or youe can import T as otherwise.
+  import { Cond, T as otherwise } from 'react-cond';
+
+	<Cond value={'_test_'}>
+		{/* ... your clauses ... */}
+		{[ T, <h1>otherwise</h1>]}
+	</Cond>
+```
+
 #### `eq`
+
+Condition to test if the value is equal (`===`) to a given value.
+
+```jsx
+  import { Cond, eq } from 'react-cond';
+
+	<Cond value={this.state.nr}>
+		{[ eq(42), <h1>nr is 42</h1>]}
+	</Cond>
+```
 #### `not`
 #### `gt`
 #### `lt`
