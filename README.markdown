@@ -123,9 +123,53 @@ import { Cond, eq, not } from 'react-cond';
 ```
 
 #### `gt`
+
+Condition to test if the value is greater than (`>`) a given value.
+
+```jsx
+import { Cond, gt } from 'react-cond';
+
+<Cond value={this.state.nr}>
+  {[ gt(42), <h1>nr greater than 42</h1>]}
+</Cond>
+```
+
 #### `lt`
+
+Condition to test if the value is lower than (`<`) a given value.
+
+```jsx
+import { Cond, lt } from 'react-cond';
+
+<Cond value={this.state.nr}>
+  {[ lt(42), <h1>nr lower than 42</h1>]}
+</Cond>
+```
+
 #### `gte`
+
+Condition to test if the value is greater or equal than (`>=`) a given value.
+
+```jsx
+import { Cond, gte } from 'react-cond';
+
+<Cond value={this.state.nr}>
+  {[ gte(42), <h1>nr greater or equal than 42</h1>]}
+</Cond>
+```
+
 #### `lte`
+
+Condition to test if the value is lower or equal than (`<=`) a given value.
+
+```jsx
+import { Cond, lte } from 'react-cond';
+
+<Cond value={this.state.nr}>
+  {[ lte(42), <h1>nr lower or equal than 42</h1>]}
+</Cond>
+```
+
 #### `and`
 #### `or`
 
