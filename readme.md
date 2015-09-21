@@ -1,17 +1,24 @@
-# react-cond [![Build Status](https://travis-ci.org/stoeffel/react-cond.svg?branch=master)](https://travis-ci.org/stoeffel/react-cond)
+<h1 align="center">react-cond</h1>
 
-> Lisp-Style conditional rendering in react.
+<p align="center">
+
+  <a href="#usage">Usage</a> |
+  <a href="#license">License</a>
+  <br><br>
+  <img align="center" src="http://33.media.tumblr.com/cc0170c0a46e44f05347ed5e6197ef4c/tumblr_mv2pp0cnrV1qcung4o1_400.gif">
+  <blockquote align="center">Lisp-Style conditional rendering in react.</blockquote>
+  <a href="https://travis-ci.org/stoeffel/react-cond"><img align="center" src="https://travis-ci.org/stoeffel/react-cond.svg?branch=master"></a>
+</p>
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
 
-## Install
+## Usage
+
+### Installation
 
 ```
 $ npm install --save react-cond
 ```
-
-
-## Usage
 
 ### Importing
 
