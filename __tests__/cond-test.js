@@ -4,7 +4,7 @@ import React from 'react/addons';
 import { equal } from 'assert';
 
 const { TestUtils } = React.addons;
-const { Cond, T, gt, lt, lte, gte, eq, notEq, and, or, not} = require('../module/');
+const { Cond, T, gt, lt, lte, gte, eq, and, or, not} = require('../module/');
 
 describe('React-Cond', () => {
 
@@ -140,13 +140,13 @@ describe('React-Cond', () => {
 		});
 	});
 
-	describe('#notEq', () => {
+	describe('#not(eq)', () => {
 
-		it('should render the child component the value is notEq the nr', () => {
+		it('should render the child component the value is not eq the nr', () => {
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ notEq(10), <h1>unexpected</h1>]}
-					{[ notEq(11), <h1>expected</h1>]}
+					{[ not(eq(10)), <h1>unexpected</h1>]}
+					{[ not(eq(11)), <h1>expected</h1>]}
 					{[ T, <h1>unexpected</h1>]}
 				</Cond>
 			);

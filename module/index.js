@@ -42,7 +42,6 @@ export const Cond = React.createClass({
 });
 
 export const T = () => true;
-export const notEq = x => y => x !== y;
 export const eq = x => y => x === y;
 export const gt = x => y => y > x;
 export const lt = x => y => y < x;
