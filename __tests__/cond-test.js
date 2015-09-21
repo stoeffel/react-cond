@@ -218,6 +218,7 @@ describe('React-Cond', () => {
 
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={20}>
+					{[ not(x => x < 30),<h1>unexpected</h1>]}
 					{[ not(x => x > 30),<h1>expected</h1>]}
 				</Cond>
 			);
