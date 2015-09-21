@@ -58,6 +58,13 @@ The `Cond` component wraps n **clauses**.
 Each **clause** has the following format:
 `{[ condition, <Component /> ]}` f.e. `{[ x=> x > 0, <Positive /> ]}`
 
+```jsx
+<Cond value={nr}>
+  {[ T, <Positive /> ]}
+  {[ T, <Zero /> ]}
+</Cond>
+```
+
 ### Condition Helpers
 
 eq, gt, lt, ...
