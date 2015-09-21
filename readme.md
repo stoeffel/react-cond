@@ -8,7 +8,7 @@
   <img align="center" src="http://33.media.tumblr.com/cc0170c0a46e44f05347ed5e6197ef4c/tumblr_mv2pp0cnrV1qcung4o1_400.gif">
   <br>
   <sub>logo by <a href="http://justinmezzell.tumblr.com/">Justin Mezzell</a></sub>
-  <blockquote align="center">Lisp-Style conditional rendering in react.</blockquote>
+  <blockquote align="center"><a href="http://www.cis.upenn.edu/~matuszek/LispText/lisp-cond.html">Lisp-Style</a> conditional rendering in react.</blockquote>
   <a href="https://travis-ci.org/stoeffel/react-cond"><img align="center" src="https://travis-ci.org/stoeffel/react-cond.svg?branch=master"></a>
 </p>
 
@@ -57,6 +57,17 @@ var T = reactCond.T;
 The `Cond` component wraps n **clauses**.
 Each **clause** has the following format:
 `{[ condition, <Component /> ]}` f.e. `{[ x=> x > 0, <Positive /> ]}`
+
+```jsx
+import { Cond, T } from 'react-cond';
+// ...
+
+<Cond value={nr}>
+  {[ x => x > 0, <Positive /> ]}
+  {[ x => x < 0, <Negative /> ]}
+  {[ T, <Zero /> ]} // `T` always evaluates to true. see Condition Helpers.
+</Cond>
+```
 
 ### Condition Helpers
 
