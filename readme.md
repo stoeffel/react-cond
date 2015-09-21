@@ -16,7 +16,6 @@ Make conditional rendering in react simple and expressive. `react-cond` is imple
 
 ## Usage
 <p align="center">
-
   <a href="#installation">Installation</a> |
   <a href="#importing">Importing</a> |
   <a href="#the-component-cond">The Component `Cond`</a> |
@@ -70,8 +69,27 @@ import { Cond, T } from 'react-cond';
 ```
 
 ### Condition Helpers
+<p align="center">
+  <a href="#t">T</a> |
+  <a href="#eq">eq</a> |
+  <a href="#not">not</a> |
+  <a href="#gt">gt</a> |
+  <a href="#lt">lt</a> |
+  <a href="#gte">gte</a> |
+  <a href="#lte">lte</a> |
+  <a href="#and">and</a> |
+  <a href="#or">or</a>
+</p>
 
-eq, gt, lt, ...
+#### `T`
+#### `eq`
+#### `not`
+#### `gt`
+#### `lt`
+#### `gte`
+#### `lte`
+#### `and`
+#### `or`
 
 ## License
 
