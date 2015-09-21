@@ -49,7 +49,7 @@ var T = reactCond.T;
 ```jsx
 <Cond value={nr}>
   {[ T, <p key="always-true">always rendered</p> ]}
-</cond>
+</Cond>
 ```
 
 ### Clauses
