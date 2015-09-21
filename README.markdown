@@ -109,7 +109,19 @@ import { Cond, eq } from 'react-cond';
   {[ eq(42), <h1>nr is 42</h1>]}
 </Cond>
 ```
+
 #### `not`
+
+Inverts a condition. Can be used to test if a value is not equal (`!==`) to a given value.
+
+```jsx
+import { Cond, eq, not } from 'react-cond';
+
+<Cond value={this.state.nr}>
+  {[ not(eq(42)), <h1>nr isn't 42</h1>]}
+</Cond>
+```
+
 #### `gt`
 #### `lt`
 #### `gte`
