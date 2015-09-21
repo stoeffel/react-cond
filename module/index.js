@@ -50,3 +50,5 @@ export const gte = x => y => y >= x;
 export const lte = x => y => y <= x;
 export const and = (x, y) => val => x(val) && y(val);
 export const or = (x, y) => val => x(val) || y(val);
+export const not = (x) => val => !x(val)
+
