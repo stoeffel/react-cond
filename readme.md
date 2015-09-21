@@ -19,7 +19,7 @@ Make conditional rendering in react simple and expressive. `react-cond` is imple
 
   <a href="#installation">Installation</a> |
   <a href="#importing">Importing</a> |
-  <a href="#the-component--Cond">The Component `Cond`</a> |
+  <a href="#the-component-cond">The Component `Cond`</a> |
   <a href="#clauses">Clauses</a> |
   <a href="#condition-helpers">Condition Helpers</a>
 </p>
