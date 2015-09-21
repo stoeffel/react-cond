@@ -88,14 +88,14 @@ The following helper functions are optional, but allow you to write even more ex
 Can be used as an otherwise or else clause. It always evaluates to `true`.
 
 ```jsx
-  import { Cond, T } from 'react-cond';
-	// or youe can import T as otherwise.
-  import { Cond, T as otherwise } from 'react-cond';
+import { Cond, T } from 'react-cond';
+// or youe can import T as otherwise.
+import { Cond, T as otherwise } from 'react-cond';
 
-	<Cond value={'_test_'}>
-		{/* ... your clauses ... */}
-		{[ T, <h1>otherwise</h1>]}
-	</Cond>
+<Cond value={'_test_'}>
+  {/* ... your clauses ... */}
+  {[ T, <h1>otherwise</h1>]}
+</Cond>
 ```
 
 #### `eq`
@@ -103,11 +103,11 @@ Can be used as an otherwise or else clause. It always evaluates to `true`.
 Condition to test if the value is equal (`===`) to a given value.
 
 ```jsx
-  import { Cond, eq } from 'react-cond';
+import { Cond, eq } from 'react-cond';
 
-	<Cond value={this.state.nr}>
-		{[ eq(42), <h1>nr is 42</h1>]}
-	</Cond>
+<Cond value={this.state.nr}>
+  {[ eq(42), <h1>nr is 42</h1>]}
+</Cond>
 ```
 #### `not`
 #### `gt`
