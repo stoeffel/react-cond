@@ -43,11 +43,11 @@ const List = React.createClass({
     return (
       <ul>
         <Cond>
-				  {[ () => isLoading, <Spinner /> ]}
-				  {[ () => hasErrors, <Error /> ]}
-				  {[ () => noSearchResult || !items.length, <NotingFound /> ]}
-				  {[ T, items ]}
-				</Cond>
+          {[ () => isLoading, <Spinner /> ]}
+          {[ () => hasErrors, <Error /> ]}
+          {[ () => noSearchResult || !items.length, <NotingFound /> ]}
+          {[ T, items ]}
+        </Cond>
       </ul>
     );
   }
