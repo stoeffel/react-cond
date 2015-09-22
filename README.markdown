@@ -52,7 +52,7 @@ const List = React.createClass({
     );
   }
 });
-``z
+```
 
 ## Usage
 <p align="center">
