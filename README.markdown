@@ -25,7 +25,7 @@ const List = React.createClass({
       <ul>
         { isLoading? <Spinner />
           : hasErrors? <Error />
-          : noSearchResult? <NotingFound />
+          : noSearchResult || items.length <= 0? <NotingFound />
           : items }
       </ul>
     );
@@ -35,7 +35,14 @@ const List = React.createClass({
 
 ### After
 ```jsx
-import { Cond, eq, T } from 'react-cond';
+import { Cond, eq, T as otherwise } from 'react-cond';
+
+const ifIsLoading = [ eq('isLoading', true), <Spinner /> ];
+const ifHasErrors = [ eq('hasErrors', true), <Error /> ];
+const ifNoSearchResult = [
+  ({ noSearchResult, items }) => noSearchResult || items.length <= 0
+  , <NotingFound /> 
+];
 
 const List = React.createClass({
   // ...
@@ -45,10 +52,10 @@ const List = React.createClass({
     return (
       <ul>
         <Cond value={this.state}>
-          {[ eq('isLoading', true), <Spinner /> ]}
-          {[ eq('hasErrors', true), <Error /> ]}
-          {[ eq('noSearchResult', true), <NotingFound /> ]}
-          {[ T, items ]}
+          {ifIsLoading}
+          {ifHasErrors}
+          {ifNoSearchResult}
+          {[ otherwise, items ]}
         </Cond>
       </ul>
     );
