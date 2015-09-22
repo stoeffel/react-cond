@@ -126,7 +126,9 @@ import { Cond, T } from 'react-cond';
 
 The following helper functions are optional, but allow you to write even more expressive conditions for your clauses.
 
-#### `T`
+#### T
+
+`T`
 
 Can be used as an otherwise or else clause. It always evaluates to `true`.
 
@@ -141,7 +143,9 @@ import { Cond, T as otherwise } from 'react-cond';
 </Cond>
 ```
 
-#### `eq`
+#### eq
+
+`eq([property:String], value:Any)`
 
 Condition to test if the value is equal (`===`) to a given value.
 
@@ -153,7 +157,9 @@ import { Cond, eq } from 'react-cond';
 </Cond>
 ```
 
-#### `not`
+#### not
+
+`not(condition:Function)`
 
 Inverts a condition. Can be used to test if a value is not equal (`!==`) to a given value.
 
@@ -165,7 +171,9 @@ import { Cond, eq, not } from 'react-cond';
 </Cond>
 ```
 
-#### `gt`
+#### gt
+
+`gt([property:String], value:Any)`
 
 Condition to test if the value is greater than (`>`) a given value.
 
@@ -177,7 +185,9 @@ import { Cond, gt } from 'react-cond';
 </Cond>
 ```
 
-#### `lt`
+#### lt
+
+`lt([property:String], value:Any)`
 
 Condition to test if the value is lower than (`<`) a given value.
 
@@ -189,7 +199,9 @@ import { Cond, lt } from 'react-cond';
 </Cond>
 ```
 
-#### `gte`
+#### gte
+
+`gte([property:String], value:Any)`
 
 Condition to test if the value is greater or equal than (`>=`) a given value.
 
@@ -201,7 +213,9 @@ import { Cond, gte } from 'react-cond';
 </Cond>
 ```
 
-#### `lte`
+#### lte
+
+`lte([property:String], value:Any)`
 
 Condition to test if the value is lower or equal than (`<=`) a given value.
 
@@ -213,7 +227,9 @@ import { Cond, lte } from 'react-cond';
 </Cond>
 ```
 
-#### `and`
+#### and
+
+`and(condition:Function, condition:Function)`
 
 Combine two conditions with a logical and (`&&`).
 
@@ -228,7 +244,9 @@ const endsWith = x => str => str.endsWith(x);
 </Cond>
 ```
 
-#### `or`
+#### or
+
+`or(condition:Function, condition:Function)`
 
 Combine two conditions with a logical or (`||`).
 
@@ -243,7 +261,9 @@ const endsWith = x => str => str.endsWith(x);
 </Cond>
 ```
 
-#### `value`
+#### value
+
+`value(property:String, condition:Function)`
 
 If your conditions depend on multiple values you can pass an object to the `value` `prop`
 and use `value` to access them.
