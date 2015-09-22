@@ -4,7 +4,7 @@ import React from 'react/addons';
 import { equal } from 'assert';
 
 const { TestUtils } = React.addons;
-const { Cond, T, gt, lt, lte, gte, eq, and, or, not} = require('../module/');
+const { Cond, T, gt, lt, lte, gte, eq, and, or, not, value} = require('../module/');
 
 describe('React-Cond', () => {
 
@@ -220,6 +220,37 @@ describe('React-Cond', () => {
 				<Cond value={20}>
 					{[ not(x => x < 30),<h1>unexpected</h1>]}
 					{[ not(x => x > 30),<h1>expected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('#value', () => {
+
+		it('should render the component if the value is eq to a value', () => {
+			const obj = { val1: 12, val2: 13 };
+
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={{...obj}}>
+					{[ and(value('val1', eq(11)), value('val2', eq(12))), <h1>unexpected</h1>]}
+					{[ and(value('val1', eq(12)), value('val2', eq(13))), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+
+		it('should render the component if the value is eq to a value, with a named value', () => {
+			const obj = { val1: 12, val2: 13 };
+
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={{...obj}}>
+					{[ and(eq('val1', 11), gte('val2', 12)), <h1>unexpected</h1>]}
+					{[ and(eq('val1', 12), gte('val2', 13)), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
