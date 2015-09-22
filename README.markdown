@@ -37,13 +37,6 @@ const List = React.createClass({
 ```jsx
 import { Cond, eq, T as otherwise } from 'react-cond';
 
-const ifIsLoading = [ eq('isLoading', true), <Spinner /> ];
-const ifHasErrors = [ eq('hasErrors', true), <Error /> ];
-const ifNoSearchResult = [
-  ({ noSearchResult, items }) => noSearchResult || items.length <= 0
-  , <NotingFound /> 
-];
-
 const List = React.createClass({
   // ...
   render() {
@@ -61,6 +54,13 @@ const List = React.createClass({
     );
   }
 });
+
+const ifIsLoading = [ eq('isLoading', true), <Spinner /> ];
+const ifHasErrors = [ eq('hasErrors', true), <Error /> ];
+const ifNoSearchResult = [
+  ({ noSearchResult, items }) => noSearchResult || items.length <= 0
+  , <NotingFound /> 
+];
 ```
 
 ## Usage
