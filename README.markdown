@@ -9,8 +9,12 @@
   <br>
   <sub>logo by <a href="http://justinmezzell.tumblr.com/">Justin Mezzell</a></sub>
   <blockquote align="center"><a href="http://www.cis.upenn.edu/~matuszek/LispText/lisp-cond.html">Lisp-Style</a> conditional rendering in react.</blockquote>
-  <a href="https://travis-ci.org/stoeffel/react-cond"><img align="center" src="https://travis-ci.org/stoeffel/react-cond.svg?branch=master"></a>
 </p>
+
+[![Build Status](https://travis-ci.org/stoeffel/react-cond.svg?branch=master)](https://travis-ci.org/stoeffel/react-cond)
+[![Dependency Status](https://david-dm.org/stoeffel/react-cond.svg)](https://david-dm.org/stoeffel/react-cond)
+[![npm version](https://badge.fury.io/js/react-cond.svg)](http://badge.fury.io/js/react-cond)
+[![Stability: unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)](https://github.com/stoeffel/react-cond/milestones/1.0)
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
 
