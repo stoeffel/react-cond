@@ -14,6 +14,46 @@
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
 
+### Before
+```jsx
+const List = React.createClass({
+  // ...
+  render() {
+    const { isLoading, hasErrors, noSearchResult, items } = this.state;
+    
+    return (
+      <ul>
+        { isLoading? <Spinner />
+          : hasErrors? <Error />
+          : noSearchResult || !items.length? <NotingFound />
+          : items }
+      </ul>
+    );
+  }
+});
+```
+
+### After
+```jsx
+const List = React.createClass({
+  // ...
+  render() {
+    const { isLoading, hasErrors, noSearchResult, items } = this.state;
+    
+    return (
+      <ul>
+        <Cond>
+				  {[ () => isLoading, <Spinner /> ]}
+				  {[ () => hasErrors, <Error /> ]}
+				  {[ () => noSearchResult || !items.length, <NotingFound /> ]}
+				  {[ T, items ]}
+				</Cond>
+      </ul>
+    );
+  }
+});
+``z
+
 ## Usage
 <p align="center">
   <a href="#installation">Installation</a> |
