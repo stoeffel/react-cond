@@ -264,7 +264,7 @@ and use `value` to access them.
 
 ### Ramda
 
-`react-cond` works greate with libraries like [Ramda][r].
+`react-cond` works great with libraries like [Ramda][r].
 
 ```jsx
 const notEquals = R.compose(R.not, R.equals);
