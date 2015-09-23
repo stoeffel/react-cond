@@ -241,7 +241,7 @@ import { Cond, lte } from 'react-cond';
 
 #### between
 
-`between([property:String], value:Any)`
+`between([property:String], start:Any, end:Any)`
 
 Condition to test if the value is between two given values.
 
