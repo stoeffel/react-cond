@@ -63,7 +63,7 @@ const ifIsLoading = [ eq('isLoading', true), <Spinner /> ];
 const ifHasErrors = [ eq('hasErrors', true), <Error /> ];
 const ifNoSearchResult = [
   ({ noSearchResult, items }) => noSearchResult || items.length <= 0
-  , <NotingFound /> 
+  , <NotingFound />
 ];
 ```
 
@@ -130,6 +130,7 @@ import { Cond, T } from 'react-cond';
   <a href="#lt">lt</a> |
   <a href="#gte">gte</a> |
   <a href="#lte">lte</a> |
+  <a href="#between">between</a> |
   <a href="#and">and</a> |
   <a href="#or">or</a> |
   <a href="#value">value</a>
@@ -237,6 +238,21 @@ import { Cond, lte } from 'react-cond';
   {[ lte(42), <h1>nr lower or equal than 42</h1>]}
 </Cond>
 ```
+
+#### between
+
+`between([property:String], value:Any)`
+
+Condition to test if the value is between two given values.
+
+```jsx
+import { Cond, between } from 'react-cond';
+
+<Cond value={this.state.nr}>
+  {[ between(1, 10), <h1>nr between 1 and 10</h1>]}
+</Cond>
+```
+
 
 #### and
 

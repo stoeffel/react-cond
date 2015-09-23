@@ -45,8 +45,8 @@ export const Cond = React.createClass({
 export const T = () => true;
 export const value = (name, condition) => val => condition(val[name]);
 
-const wrap = fn => (...args) => {
-	if (args.length >= 2) {
+const wrap = (fn, count=1) => (...args) => {
+	if (args.length >= count + 1) {
 		const [ name, ...params ] = args;
 		return value(name, fn(...params));
 	} else {
@@ -59,6 +59,7 @@ export const gt = wrap(x => y => y > x);
 export const lt = wrap(x => y => y < x);
 export const gte = wrap(x => y => y >= x);
 export const lte = wrap(x => y => y <= x);
+export const between = wrap((x, y) => val => x < val && val < y, 2);
 
 export const and = (x, y) => val => x(val) && y(val);
 export const or = (x, y) => val => x(val) || y(val);

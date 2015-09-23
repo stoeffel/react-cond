@@ -4,7 +4,7 @@ import React from 'react/addons';
 import { equal } from 'assert';
 
 const { TestUtils } = React.addons;
-const { Cond, T, gt, lt, lte, gte, eq, and, or, not, value} = require('../module/');
+const { Cond, T, gt, lt, lte, gte, eq, and, or, not, value, between} = require('../module/');
 
 describe('React-Cond', () => {
 
@@ -169,6 +169,22 @@ describe('React-Cond', () => {
 			equal(val.getDOMNode().textContent, 'expected');
 		});
 	});
+
+	describe('#between', () => {
+
+		it('should render the child component the value is between the nr', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={10}>
+					{[ between(10, 12), <h1>unexpected</h1>]}
+					{[ between(9, 11), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
 
 	describe('#and', () => {
 
