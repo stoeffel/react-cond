@@ -3,6 +3,7 @@
 <p align="center">
 
   <a href="#usage">Usage</a> |
+  <a href="#examples">Examples</a> |
   <a href="#license">License</a>
   <br><br>
   <img align="center" src="http://33.media.tumblr.com/cc0170c0a46e44f05347ed5e6197ef4c/tumblr_mv2pp0cnrV1qcung4o1_400.gif">
@@ -18,54 +19,6 @@
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
 
-### Before
-```jsx
-const List = React.createClass({
-  // ...
-  render() {
-    const { isLoading, hasErrors, noSearchResult, items } = this.state;
-
-    return (
-      <ul>
-        { isLoading? <Spinner />
-          : hasErrors? <Error />
-          : noSearchResult || items.length <= 0? <NotingFound />
-          : items }
-      </ul>
-    );
-  }
-});
-```
-
-### After
-```jsx
-import { Cond, eq, T as otherwise } from 'react-cond';
-
-const List = React.createClass({
-  // ...
-  render() {
-    const { items } = this.state;
-
-    return (
-      <ul>
-        <Cond value={this.state}>
-          {ifIsLoading}
-          {ifHasErrors}
-          {ifNoSearchResult}
-          {[ otherwise, items ]}
-        </Cond>
-      </ul>
-    );
-  }
-});
-
-const ifIsLoading = [ eq('isLoading', true), <Spinner /> ];
-const ifHasErrors = [ eq('hasErrors', true), <Error /> ];
-const ifNoSearchResult = [
-  ({ noSearchResult, items }) => noSearchResult || items.length <= 0
-  , <NotingFound />
-];
-```
 
 ## Usage
 <p align="center">
@@ -303,6 +256,61 @@ and use `value` to access them.
 </Cond>
 ```
 
+## Examples
+<p align="center">
+  <a href="#ramda">Ramda</a> |
+  <a href="#multiple-values">Multiple Values</a>
+</p>
+
+### Ramda
+
+`react-cond` works greate with libraries like [Ramda][r].
+
+```jsx
+const notEquals = R.compose(R.not, R.equals);
+const gt = R.flip(R.gt);
+const gt11 = gt(11);
+
+<Cond value={10}>
+  {[ notEquals(10), <h1>not 10</h1>]}
+  {[ gt11, <h1>greater than 11</h1>]}
+  {[ R.T, <h1>otherwise</h1>]}
+</Cond>
+```
+
+### Multiple Values
+
+This example shows how you can make conditions which depend on more than one value.
+
+```jsx
+import { Cond, eq, T as otherwise } from 'react-cond';
+
+const List = React.createClass({
+  // ...
+  render() {
+    const { items } = this.state;
+
+    return (
+      <ul>
+        <Cond value={this.state}>
+          {[ ({ isLoading }) => isLoading, <Spinner /> ]}
+          {[ eq('hasErrors', true), <Error /> ]}
+          {ifNoSearchResult}
+          {[ otherwise, items ]}
+        </Cond>
+      </ul>
+    );
+  }
+});
+
+const ifNoSearchResult = [
+  ({ noSearchResult, items }) => noSearchResult || items.length <= 0
+  , <NotingFound />
+];
+```
+
 ## License
 
 MIT © [Christoph Hermann](http://stoeffel.github.io)
+
+[r]: http://ramdajs.com
