@@ -57,6 +57,11 @@ var T = reactCond.T;
 </Cond>
 ```
 
+`Cond` has two `props`: `value` and `compare`.
+
+`value` is the value which gets passed to each **clause**.
+`compare` is the default compare function for each **clause**.
+
 ### Clauses
 
 The `Cond` component wraps n **clauses**.
