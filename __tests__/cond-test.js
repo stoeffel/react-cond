@@ -4,7 +4,24 @@ import React from 'react/addons';
 import { equal } from 'assert';
 
 const { TestUtils } = React.addons;
-const { Cond, T, gt, lt, lte, gte, eq, and, or, not, value, between} = require('../module/');
+const {
+	Cond,
+	T,
+	gt,
+	lt,
+	lte,
+	gte,
+	eq,
+	isTrue,
+	isFalse,
+	isUndefined,
+	isNull,
+	and,
+	or,
+	not,
+	value,
+	between
+} = require('../module/');
 
 describe('React-Cond', () => {
 
@@ -162,6 +179,66 @@ describe('React-Cond', () => {
 				<Cond value={10}>
 					{[ eq(11), <h1>unexpected</h1>]}
 					{[ eq(10), <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('isTrue', () => {
+
+		it('should render the child component the value is true', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={true}>
+					{[ isFalse, <h1>unexpected</h1>]}
+					{[ isTrue, <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('isFalse', () => {
+
+		it('should render the child component the value is false', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={false}>
+					{[ isTrue, <h1>unexpected</h1>]}
+					{[ isFalse, <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('isUndefined', () => {
+
+		it('should render the child component the value is undefined', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={undefined}>
+					{[ isNull, <h1>unexpected</h1>]}
+					{[ isUndefined, <h1>expected</h1>]}
+					{[ T, <h1>unexpected</h1>]}
+				</Cond>
+			);
+			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+			equal(val.getDOMNode().textContent, 'expected');
+		});
+	});
+
+	describe('isNull', () => {
+
+		it('should render the child component the value is null', () => {
+			let component = TestUtils.renderIntoDocument(
+				<Cond value={null}>
+					{[ isUndefined, <h1>unexpected</h1>]}
+					{[ isNull, <h1>expected</h1>]}
 					{[ T, <h1>unexpected</h1>]}
 				</Cond>
 			);

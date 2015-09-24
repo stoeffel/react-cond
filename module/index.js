@@ -60,6 +60,10 @@ export const lt = wrap(x => y => y < x);
 export const gte = wrap(x => y => y >= x);
 export const lte = wrap(x => y => y <= x);
 export const between = wrap((x, y) => val => x < val && val < y, 2);
+export const isTrue = eq(true);
+export const isFalse = eq(false);
+export const isNull = eq(null);
+export const isUndefined = eq(undefined);
 
 export const and = (x, y) => val => x(val) && y(val);
 export const or = (x, y) => val => x(val) || y(val);

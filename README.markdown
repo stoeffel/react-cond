@@ -18,6 +18,21 @@
 [![Stability: unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)](https://github.com/stoeffel/react-cond/milestones/1.0)
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
+React-cond is designed to work great with FP-libraries like [Ramda][r].
+
+```jsx
+import { Cond, between, eq, T } from 'react-cond';
+
+// ...
+
+<Cond value={angerLevel}>
+	{[ eq(0), <span>sleepy</span> ]}
+	{[ between(0, 20), <span>calm</span> ]}
+	{[ between(20, 40), <span>angry</span> ]}
+	{[ between(40, 41), <span>raging</span> ]}
+	{[ T, <span>unknown anger level</span> ]}
+</Cond>
+```
 
 
 ## Usage
@@ -83,6 +98,10 @@ import { Cond, T } from 'react-cond';
 <p align="center">
   <a href="#t">T</a> |
   <a href="#eq">eq</a> |
+  <a href="#istrue">isTrue</a> |
+  <a href="#isfalse">isFalse</a> |
+  <a href="#isundefined">isUndefined</a> |
+  <a href="#isnull">isNull</a> |
   <a href="#not">not</a> |
   <a href="#gt">gt</a> |
   <a href="#lt">lt</a> |
@@ -124,6 +143,62 @@ import { Cond, eq } from 'react-cond';
 
 <Cond value={this.state.nr}>
   {[ eq(42), <h1>nr is 42</h1>]}
+</Cond>
+```
+
+#### isTrue
+
+`isTrue([property:String])`
+
+Condition to test if the value is `true`.
+
+```jsx
+import { Cond, isTrue } from 'react-cond';
+
+<Cond value={true}>
+  {[ isTrue, <h1>true</h1>]}
+</Cond>
+```
+
+#### isFalse
+
+`isFalse([property:String])`
+
+Condition to test if the value is `false`.
+
+```jsx
+import { Cond, isFalse } from 'react-cond';
+
+<Cond value={false}>
+  {[ isFalse, <h1>false</h1>]}
+</Cond>
+```
+
+#### isUndefined
+
+`isUndefined([property:String])`
+
+Condition to test if the value is `undefined`.
+
+```jsx
+import { Cond, isUndefined } from 'react-cond';
+
+<Cond value={undefined}>
+  {[ isUndefined, <h1>undefined</h1>]}
+</Cond>
+```
+
+#### isNull
+
+`isNull([property:String])`
+
+Condition to test if the value is `null`.
+
+```jsx
+import { Cond, isNull } from 'react-cond';
+
+<Cond value={null}>
+  {[ isNull, <h1>null</h1>]}
 </Cond>
 ```
 
