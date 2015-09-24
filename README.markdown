@@ -15,7 +15,8 @@
 [![Build Status](https://travis-ci.org/stoeffel/react-cond.svg?branch=master)](https://travis-ci.org/stoeffel/react-cond)
 [![Dependency Status](https://david-dm.org/stoeffel/react-cond.svg)](https://david-dm.org/stoeffel/react-cond)
 [![npm version](https://badge.fury.io/js/react-cond.svg)](http://badge.fury.io/js/react-cond)
-[![Stability: unstable](https://img.shields.io/badge/stability-unstable-yellowgreen.svg)](https://github.com/stoeffel/react-cond/milestones/1.0)
+[![Stability: 
+](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/stoeffel/react-cond/milestones/1.0)
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
 React-cond is designed to work great with FP-libraries like [Ramda][r].
