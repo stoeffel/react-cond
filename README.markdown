@@ -65,7 +65,7 @@ var T = reactCond.T;
 
 ### The Component `Cond`
 
-`Cond` is a react component, which controls rendering of it's child components.
+`Cond` is a react component, which controls rendering of its child components.
 
 ```jsx
 <Cond value={nr}>
