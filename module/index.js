@@ -54,7 +54,7 @@ export const Cond = React.createClass({
 export const T = () => true;
 export const value = (name, condition) => val => condition(val[name]);
 
-export const Case = React.createClass({
+export const Clause = React.createClass({
 	getDefaultProps() {
 		return {[CASE_SYMBOL]: true};
 	},
