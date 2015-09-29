@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Could use ES6 symbols in future
+const CASE_SYMBOL = "__is-react-cond-component";
+
 const isFunction = func => typeof func === 'function';
 const isEqual = (a, b) => a === b;
 
@@ -26,8 +29,15 @@ export const Cond = React.createClass({
 
 	render() {
 		const { children, compare, value } = this.props;
+		let clauses = [];
 
-		const clauses = Array.isArray(children[0])? children: [children];
+		if (Array.isArray(children[0])) {
+			clauses = children;
+		} else if (children[0] && children[0].props && children[0].props[CASE_SYMBOL]) {
+			clauses = children.map(c => [c.props.test, c.props.children]);
+		} else {
+			clauses = [children];
+		}
 
 		const normalized = clauses.map( clause =>
 			Array.isArray(clause)?
@@ -41,9 +51,30 @@ export const Cond = React.createClass({
 	}
 });
 
-
 export const T = () => true;
 export const value = (name, condition) => val => condition(val[name]);
+
+export const Case = React.createClass({
+	getDefaultProps() {
+		return {[CASE_SYMBOL]: true};
+	},
+	render() {
+		return null;
+	}
+});
+
+export const Default = React.createClass({
+	getDefaultProps() {
+		return {
+			test: T,
+			[CASE_SYMBOL]: true
+		};
+	},
+	render() {
+		return null;
+	}
+});
+
 
 const wrap = (fn, count=1) => (...args) => {
 	if (args.length >= count + 1) {
