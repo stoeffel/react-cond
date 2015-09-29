@@ -1,6 +1,6 @@
 {
   "name": "react-cond",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Lisp-Style conditional rendering in react.",
   "license": "MIT",
   "repository": "stoeffel/react-cond",
