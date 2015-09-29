@@ -22,9 +22,7 @@ Make conditional rendering in react simple and expressive. `react-cond` is imple
 React-cond is designed to work great with FP-libraries like [Ramda][r].
 
 ```jsx
-import { Cond, between, eq, T } from 'react-cond';
-
-// ...
+import { Cond, between, eq, T, Clause, Default } from 'react-cond';
 
 <Cond value={angerLevel}>
 	{[ eq(0), <span>sleepy</span> ]}
@@ -33,6 +31,17 @@ import { Cond, between, eq, T } from 'react-cond';
 	{[ between(40, 41), <span>raging</span> ]}
 	{[ T, <span>unknown anger level</span> ]}
 </Cond>
+
+// or as components
+
+<Cond value={angerLevel}>
+	<Clause test={eq(0)}><span>sleepy</span></Clause>
+	<Clause test={between(0, 20)}><span>calm</span></Clause>
+	<Clause test={between(20, 40)}><span>angry</span></Clause>
+	<Clause test={between(40, 41)}><span>raging</span></Clause>
+	<Default><span>unknown anger level</span></Default>
+</Cond>
+
 ```
 
 
