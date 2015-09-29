@@ -90,8 +90,9 @@ var T = reactCond.T;
 ### Clauses
 
 The `Cond` component wraps n **clauses**.
-Each **clause** has the following format:
+A **clause** has either the following format:
 `{[ condition, <Component /> ]}` f.e. `{[ x=> x > 0, <Positive /> ]}`
+or is a `Clause`/`Default` component.
 
 ```jsx
 import { Cond, T } from 'react-cond';
@@ -101,6 +102,16 @@ import { Cond, T } from 'react-cond';
   {[ x => x > 0, <Positive /> ]}
   {[ x => x < 0, <Negative /> ]}
   {[ T, <Zero /> ]} // `T` always evaluates to true. see Helper Functions.
+</Cond>
+
+// or with Clause/Default
+import { Cond, Clause, Default } from 'react-cond';
+// ...
+
+<Cond value={nr}>
+  <Clause test={x => x > 0}><Positive /></Clause>
+  <Clause test={x => x < 0}><Negative /></Clause>
+  <Default><Zero /></Default>
 </Cond>
 ```
 
