@@ -22,9 +22,7 @@ Make conditional rendering in react simple and expressive. `react-cond` is imple
 React-cond is designed to work great with FP-libraries like [Ramda][r].
 
 ```jsx
-import { Cond, between, eq, T } from 'react-cond';
-
-// ...
+import { Cond, between, eq, T, Clause, Default } from 'react-cond';
 
 <Cond value={angerLevel}>
 	{[ eq(0), <span>sleepy</span> ]}
@@ -33,6 +31,17 @@ import { Cond, between, eq, T } from 'react-cond';
 	{[ between(40, 41), <span>raging</span> ]}
 	{[ T, <span>unknown anger level</span> ]}
 </Cond>
+
+// or as components
+
+<Cond value={angerLevel}>
+	<Clause test={eq(0)}><span>sleepy</span></Clause>
+	<Clause test={between(0, 20)}><span>calm</span></Clause>
+	<Clause test={between(20, 40)}><span>angry</span></Clause>
+	<Clause test={between(40, 41)}><span>raging</span></Clause>
+	<Default><span>unknown anger level</span></Default>
+</Cond>
+
 ```
 
 
@@ -81,8 +90,9 @@ var T = reactCond.T;
 ### Clauses
 
 The `Cond` component wraps n **clauses**.
-Each **clause** has the following format:
+A **clause** has either the following format:
 `{[ condition, <Component /> ]}` f.e. `{[ x=> x > 0, <Positive /> ]}`
+or is a `Clause`/`Default` component.
 
 ```jsx
 import { Cond, T } from 'react-cond';
@@ -92,6 +102,16 @@ import { Cond, T } from 'react-cond';
   {[ x => x > 0, <Positive /> ]}
   {[ x => x < 0, <Negative /> ]}
   {[ T, <Zero /> ]} // `T` always evaluates to true. see Helper Functions.
+</Cond>
+
+// or with Clause/Default
+import { Cond, Clause, Default } from 'react-cond';
+// ...
+
+<Cond value={nr}>
+  <Clause test={x => x > 0}><Positive /></Clause>
+  <Clause test={x => x < 0}><Negative /></Clause>
+  <Default><Zero /></Default>
 </Cond>
 ```
 
