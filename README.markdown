@@ -15,7 +15,7 @@
 [![Build Status](https://travis-ci.org/stoeffel/react-cond.svg?branch=master)](https://travis-ci.org/stoeffel/react-cond)
 [![Dependency Status](https://david-dm.org/stoeffel/react-cond.svg)](https://david-dm.org/stoeffel/react-cond)
 [![npm version](https://badge.fury.io/js/react-cond.svg)](http://badge.fury.io/js/react-cond)
-[![Stability: 
+[![Stability:
 ](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/stoeffel/react-cond/milestones/1.0)
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
@@ -368,14 +368,15 @@ and use `value` to access them.
 `react-cond` works great with libraries like [Ramda][r].
 
 ```jsx
+import R, { __, T } from 'ramda';
+
 const notEquals = R.compose(R.not, R.equals);
-const gt = R.flip(R.gt);
-const gt11 = gt(11);
+const gt11 = R.gt(__, 11);
 
 <Cond value={10}>
   {[ notEquals(10), <h1>not 10</h1>]}
   {[ gt11, <h1>greater than 11</h1>]}
-  {[ R.T, <h1>otherwise</h1>]}
+  {[ T, <h1>otherwise</h1>]}
 </Cond>
 ```
 

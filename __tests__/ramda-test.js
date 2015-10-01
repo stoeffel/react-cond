@@ -1,7 +1,7 @@
 jest.dontMock('../module/');
 
 import React from 'react/addons';
-import R from 'ramda';
+import R, { __ } from 'ramda';
 import { equal } from 'assert';
 
 const { TestUtils } = React.addons;
@@ -13,11 +13,10 @@ describe('React-Cond', () => {
 	describe('#R.gt', () => {
 
 		it('should render the child component the value is gt the nr', () => {
-			const gt = R.flip(R.gt);
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ gt(11), <h1>unexpected</h1>]}
-					{[ gt(9), <h1>expected</h1>]}
+					{[ R.gt(__, 11), <h1>unexpected</h1>]}
+					{[ R.gt(__, 9), <h1>expected</h1>]}
 					{[ R.T, <h1>unexpected</h1>]}
 				</Cond>
 			);
@@ -29,12 +28,10 @@ describe('React-Cond', () => {
 	describe('#R.lt', () => {
 
 		it('should render the child component the value is lt the nr', () => {
-			const lt = R.flip(R.lt);
-
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ lt(10), <h1>unexpected</h1>]}
-					{[ lt(11), <h1>expected</h1>]}
+					{[ R.lt(__, 10), <h1>unexpected</h1>]}
+					{[ R.lt(__, 11), <h1>expected</h1>]}
 					{[ R.T, <h1>unexpected</h1>]}
 				</Cond>
 			);
@@ -46,12 +43,10 @@ describe('React-Cond', () => {
 	describe('#R.lte', () => {
 
 		it('should render the child component the value is lte the nr', () => {
-			const lte = R.flip(R.lte);
-
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ lte(9), <h1>unexpected</h1>]}
-					{[ lte(10), <h1>expected</h1>]}
+					{[ R.lte(__, 9), <h1>unexpected</h1>]}
+					{[ R.lte(__, 10), <h1>expected</h1>]}
 					{[ R.T, <h1>unexpected</h1>]}
 				</Cond>
 			);
@@ -63,11 +58,10 @@ describe('React-Cond', () => {
 	describe('#R.gte', () => {
 
 		it('should render the child component the value is gte the nr', () => {
-			const gte = R.flip(R.gte);
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ gte(11), <h1>unexpected</h1>]}
-					{[ gte(10), <h1>expected</h1>]}
+					{[ R.gte(__, 11), <h1>unexpected</h1>]}
+					{[ R.gte(__, 10), <h1>expected</h1>]}
 					{[ R.T, <h1>unexpected</h1>]}
 				</Cond>
 			);
@@ -111,7 +105,7 @@ describe('React-Cond', () => {
 	describe('#between', () => {
 
 		it('should render the child component the value is between the nr', () => {
-			const between = (x, y) => R.allPass([R.flip(R.gt)(x), R.flip(R.lt)(y)]);
+			const between = (x, y) => R.allPass([R.gt(__, x), R.lt(__, y)]);
 
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
