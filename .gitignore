@@ -3,3 +3,4 @@ npm-debug.log
 .DS_Store
 index.js
 !module/index.js
+coverage

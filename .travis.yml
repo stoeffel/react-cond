@@ -1,4 +1,13 @@
-sudo: false
-language: node_js
+before_install:
+  git config user.name "Travis CI"
+
+language:
+  node_js
 node_js:
-  - 'iojs'
+  - stable
+  - iojs
+
+after_script:
+  npm run coveralls
+
+sudo: false
