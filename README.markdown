@@ -12,12 +12,10 @@
   <blockquote align="center"><a href="http://www.cis.upenn.edu/~matuszek/LispText/lisp-cond.html">Lisp-Style</a> conditional rendering in react.</blockquote>
 </p>
 
-[![Build Status](https://travis-ci.org/stoeffel/react-cond.svg?branch=master)](https://travis-ci.org/stoeffel/react-cond)
-[![Coverage Status](https://coveralls.io/repos/stoeffel/react-cond/badge.svg?branch=master&service=github)](https://coveralls.io/github/stoeffel/react-cond?branch=master)
-[![Dependency Status](https://david-dm.org/stoeffel/react-cond.svg)](https://david-dm.org/stoeffel/react-cond)
-[![npm version](https://badge.fury.io/js/react-cond.svg)](http://badge.fury.io/js/react-cond)
-[![Stability:
-](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/stoeffel/react-cond/milestones/1.0)
+[![Travis](https://img.shields.io/travis/stoeffel/react-cond.svg?style=flat-square)](https://travis-ci.org/stoeffel/react-cond)
+[![Coveralls](https://img.shields.io/coveralls/stoeffel/react-cond.svg?style=flat-square)](https://coveralls.io/github/stoeffel/react-cond)
+[![David](https://img.shields.io/david/stoeffel/react-cond.svg?style=flat-square)](https://david-dm.org/stoeffel/react-cond)
+[![npm](https://img.shields.io/npm/v/react-cond.svg?style=flat-square)](https://www.npmjs.com/package/react-cond)
 
 Make conditional rendering in react simple and expressive. `react-cond` is implemented as a component, which takes n **clauses** as its children. Each **clause** is an array with a **condition** and a component. The first child-component, where the **condition** evaluates to `true` gets rendered in a `Cond` component.
 React-cond is designed to work great with FP-libraries like [Ramda][r].
