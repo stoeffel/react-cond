@@ -13,6 +13,7 @@
 </p>
 
 [![Build Status](https://travis-ci.org/stoeffel/react-cond.svg?branch=master)](https://travis-ci.org/stoeffel/react-cond)
+[![Coverage Status](https://coveralls.io/repos/stoeffel/react-cond/badge.svg?branch=master&service=github)](https://coveralls.io/github/stoeffel/react-cond?branch=master)
 [![Dependency Status](https://david-dm.org/stoeffel/react-cond.svg)](https://david-dm.org/stoeffel/react-cond)
 [![npm version](https://badge.fury.io/js/react-cond.svg)](http://badge.fury.io/js/react-cond)
 [![Stability:
