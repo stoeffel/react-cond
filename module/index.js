@@ -34,7 +34,11 @@ export const Cond = React.createClass({
 		if (Array.isArray(children[0])) {
 			clauses = children;
 		} else if (children[0] && children[0].props && children[0].props[CASE_SYMBOL]) {
+      // multiple clauses
 			clauses = children.map(c => [c.props.test, c.props.children]);
+		} else if (children && children.props && children.props[CASE_SYMBOL]) {
+      // single clause
+			clauses = [[children.props.test, children.props.children]];
 		} else {
 			clauses = [children];
 		}

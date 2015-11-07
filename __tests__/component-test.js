@@ -11,6 +11,18 @@ const {
 } = require('../module/');
 describe('React-Cond components', () => {
 
+  it('should render the child component for a single condition if it matches', () => {
+	  	const isTrue = (i) => i;
+
+		let component = TestUtils.renderIntoDocument(
+			<Cond value={true}>
+				<Clause test={isTrue}><h1>Works!</h1></Clause>
+			</Cond>
+		);
+		let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
+		equal(val.getDOMNode().textContent, 'Works!');
+	});
+
   it('should render the child component if the condition value is equal to `props.value`', () => {
 		let component = TestUtils.renderIntoDocument(
 			<Cond value={1}>
