@@ -36,12 +36,14 @@
     "jest-cli": "0.5.8",
     "nodangel": "1.3.8",
     "ramda": "0.17.1",
-    "react": "0.13.3"
+    "react": "^0.14.2",
+    "react-addons-test-utils": "^0.14.2"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-addons-test-utils",
       "<rootDir>/node_modules/ramda"
     ],
     "testFileExtensions": [
