@@ -1,10 +1,10 @@
 jest.dontMock('../module/');
 
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import R, { __ } from 'ramda';
 import { equal } from 'assert';
 
-const { TestUtils } = React.addons;
 const { Cond, value, and } = require('../module/');
 
 
@@ -15,13 +15,13 @@ describe('React-Cond', () => {
 		it('should render the child component the value is gt the nr', () => {
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ R.gt(__, 11), <h1>unexpected</h1>]}
-					{[ R.gt(__, 9), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ R.gt(__, 11), <h1 key={1}>unexpected</h1>]}
+					{[ R.gt(__, 9), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={3}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -30,13 +30,13 @@ describe('React-Cond', () => {
 		it('should render the child component the value is lt the nr', () => {
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ R.lt(__, 10), <h1>unexpected</h1>]}
-					{[ R.lt(__, 11), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ R.lt(__, 10), <h1 key={1}>unexpected</h1>]}
+					{[ R.lt(__, 11), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={3}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -45,13 +45,13 @@ describe('React-Cond', () => {
 		it('should render the child component the value is lte the nr', () => {
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ R.lte(__, 9), <h1>unexpected</h1>]}
-					{[ R.lte(__, 10), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ R.lte(__, 9), <h1 key={1}>unexpected</h1>]}
+					{[ R.lte(__, 10), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={3}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -60,13 +60,13 @@ describe('React-Cond', () => {
 		it('should render the child component the value is gte the nr', () => {
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ R.gte(__, 11), <h1>unexpected</h1>]}
-					{[ R.gte(__, 10), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ R.gte(__, 11), <h1 key={1}>unexpected</h1>]}
+					{[ R.gte(__, 10), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={3}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -77,13 +77,13 @@ describe('React-Cond', () => {
 
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ notEquals(10), <h1>unexpected</h1>]}
-					{[ notEquals(11), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ notEquals(10), <h1 key={1}>unexpected</h1>]}
+					{[ notEquals(11), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={3}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -92,13 +92,13 @@ describe('React-Cond', () => {
 		it('should render the child component the value is eq the nr', () => {
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ R.equals(11), <h1>unexpected</h1>]}
-					{[ R.equals(10), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ R.equals(11), <h1 key={1}>unexpected</h1>]}
+					{[ R.equals(10), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={1}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -109,13 +109,13 @@ describe('React-Cond', () => {
 
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={10}>
-					{[ between(10, 12), <h1>unexpected</h1>]}
-					{[ between(9, 11), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ between(10, 12), <h1 key={1}>unexpected</h1>]}
+					{[ between(9, 11), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={3}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -128,15 +128,15 @@ describe('React-Cond', () => {
 
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={'_test_'}>
-					{[ R.allPass([startsWith('-'), endsWith('-')]), <h1>unexpected</h1>]}
-					{[ R.allPass([startsWith('-'), endsWith('_')]), <h1>unexpected</h1>]}
-					{[ R.allPass([startsWith('_'), endsWith('-')]), <h1>unexpected</h1>]}
-					{[ R.allPass([startsWith('_'), endsWith('_')]), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ R.allPass([startsWith('-'), endsWith('-')]), <h1 key={1}>unexpected</h1>]}
+					{[ R.allPass([startsWith('-'), endsWith('_')]), <h1 key={2}>unexpected</h1>]}
+					{[ R.allPass([startsWith('_'), endsWith('-')]), <h1 key={3}>unexpected</h1>]}
+					{[ R.allPass([startsWith('_'), endsWith('_')]), <h1 key={4}>expected</h1>]}
+					{[ R.T, <h1 key={5}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -148,15 +148,15 @@ describe('React-Cond', () => {
 
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={'_test_'}>
-					{[ R.anyPass([startsWith('-'), endsWith('-')]), <h1>unexpected</h1>]}
-					{[ R.anyPass([startsWith('-'), endsWith('_')]), <h1>expected</h1>]}
-					{[ R.anyPass([startsWith('_'), endsWith('-')]), <h1>unexpected</h1>]}
-					{[ R.anyPass([startsWith('_'), endsWith('_')]), <h1>unexpected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ R.anyPass([startsWith('-'), endsWith('-')]), <h1 key={1}>unexpected</h1>]}
+					{[ R.anyPass([startsWith('-'), endsWith('_')]), <h1 key={2}>expected</h1>]}
+					{[ R.anyPass([startsWith('_'), endsWith('-')]), <h1 key={3}>unexpected</h1>]}
+					{[ R.anyPass([startsWith('_'), endsWith('_')]), <h1 key={4}>unexpected</h1>]}
+					{[ R.T, <h1 key={5}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 
@@ -167,13 +167,13 @@ describe('React-Cond', () => {
 
 			let component = TestUtils.renderIntoDocument(
 				<Cond value={{...obj}}>
-					{[ and(R.propEq('val1', 11), R.propEq('val2', 12)), <h1>unexpected</h1>]}
-					{[ and(R.propEq('val1', 12), R.propEq('val2', 13)), <h1>expected</h1>]}
-					{[ R.T, <h1>unexpected</h1>]}
+					{[ and(R.propEq('val1', 11), R.propEq('val2', 12)), <h1 key={1}>unexpected</h1>]}
+					{[ and(R.propEq('val1', 12), R.propEq('val2', 13)), <h1 key={2}>expected</h1>]}
+					{[ R.T, <h1 key={3}>unexpected</h1>]}
 				</Cond>
 			);
 			let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-			equal(val.getDOMNode().textContent, 'expected');
+			equal(val.textContent, 'expected');
 		});
 	});
 

@@ -1,9 +1,9 @@
 jest.dontMock('../module/');
 
-import React from 'react/addons';
+import React from 'react';
 import { equal } from 'assert';
+import TestUtils from 'react-addons-test-utils';
 
-const { TestUtils } = React.addons;
 const {
 	Cond,
 	Clause,
@@ -16,23 +16,23 @@ describe('React-Cond components', () => {
 
 		let component = TestUtils.renderIntoDocument(
 			<Cond value={true}>
-				<Clause test={isTrue}><h1>Works!</h1></Clause>
+				<Clause key='1' test={isTrue}><h1>Works!</h1></Clause>
 			</Cond>
 		);
 		let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-		equal(val.getDOMNode().textContent, 'Works!');
+		equal(val.textContent, 'Works!');
 	});
 
   it('should render the child component if the condition value is equal to `props.value`', () => {
 		let component = TestUtils.renderIntoDocument(
 			<Cond value={1}>
-				<Clause test={2}><h1>unexpected</h1></Clause>
-				<Clause test={1}><h1>expected</h1></Clause>
-				<Default><h1>default</h1></Default>
+				<Clause key='1' test={2}><h1>unexpected</h1></Clause>
+				<Clause key='2' test={1}><h1>expected</h1></Clause>
+				<Default key='default'><h1>default</h1></Default>
 			</Cond>
 		);
 		let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-		equal(val.getDOMNode().textContent, 'expected');
+		equal(val.textContent, 'expected');
 	});
 
   it('should render the child component if the condition matches', () => {
@@ -41,25 +41,25 @@ describe('React-Cond components', () => {
 
 		let component = TestUtils.renderIntoDocument(
 			<Cond value={5}>
-				<Clause test={isEven}><h1>even</h1></Clause>
-				<Clause test={isOdd}><h1>odd</h1></Clause>
-				<Default><h1>wut?</h1></Default>
+				<Clause key='1' test={isEven}><h1>even</h1></Clause>
+				<Clause key='2' test={isOdd}><h1>odd</h1></Clause>
+				<Default key='default'><h1>wut?</h1></Default>
 			</Cond>
 		);
 		let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-		equal(val.getDOMNode().textContent, 'odd');
+		equal(val.textContent, 'odd');
 	});
 
   it('should render the default value if no cases match', () => {
 		let component = TestUtils.renderIntoDocument(
 			<Cond value={10}>
-				<Clause test={2}><h1>unexpected</h1></Clause>
-				<Clause test={1}><h1>expected</h1></Clause>
-				<Default><h1>default</h1></Default>
+				<Clause key='1' test={2}><h1>unexpected</h1></Clause>
+				<Clause key='2' test={1}><h1>expected</h1></Clause>
+				<Default key='default'><h1>default</h1></Default>
 			</Cond>
 		);
 		let val = TestUtils.findRenderedDOMComponentWithTag(component, 'h1');
-		equal(val.getDOMNode().textContent, 'default');
+		equal(val.textContent, 'default');
 	});
 
 });
