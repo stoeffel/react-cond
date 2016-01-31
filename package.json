@@ -51,6 +51,9 @@
       "<rootDir>/node_modules/react-addons-test-utils",
       "<rootDir>/node_modules/ramda"
     ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
     "testFileExtensions": [
       "es6",
       "js"
