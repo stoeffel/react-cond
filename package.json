@@ -15,7 +15,7 @@
   "scripts": {
     "build": "babel module --out-dir ./",
     "develop": "nodangel --ignore node_modules --watch __tests__ --watch module --exec 'npm run test'",
-    "test": "BABEL_JEST_STAGE=0 jest --coverage",
+    "test": "jest --coverage",
     "coveralls": "npm test && cat ./coverage/lcov.info | coveralls",
     "patch-release": "npm run build && npm version patch && npm publish && git push --follow-tags",
     "minor-release": "npm run build && npm version minor && npm publish && git push --follow-tags",
